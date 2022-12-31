@@ -3,6 +3,7 @@ package com.driver;
 public class SavingsAccount extends BankAccount{
     double rate;
     double maxWithdrawalLimit;
+    int withdrawNo;
 
     public double getRate() {
         return rate;
@@ -25,8 +26,9 @@ public class SavingsAccount extends BankAccount{
         // 2. "Insufficient Balance" : If the amount exceeds balance
 
         if(amount > getBalance()) throw new Exception("Insufficient Balance");
-        if(amount > maxWithdrawalLimit) throw new Exception("Maximum Withdraw Limit Exceed");
+        if(withdrawNo > maxWithdrawalLimit) throw new Exception("Maximum Withdraw Limit Exceed");
         super.withdraw(amount);
+        this.withdrawNo++;
 
     }
 
